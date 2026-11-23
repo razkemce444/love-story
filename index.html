@@ -1,0 +1,634 @@
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>From Your Favorite Person 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffe0eb, #ffc1d6, #fff0f5);
+    color: #963c60;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+header {
+    padding: 80px 15px 45px;
+}
+
+h1 {
+    font-size: clamp(35px, 8vw, 60px);
+    color: #d64e80;
+    text-shadow: 2px 3px 12px white;
+}
+
+header p {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.container {
+    width: 90%;
+    max-width: 750px;
+    margin: auto;
+}
+
+.card {
+    background: rgba(255,255,255,.85);
+    padding: 30px 22px;
+    border-radius: 25px;
+    margin: 28px 0;
+    box-shadow: 0 8px 25px #c75c8030;
+}
+
+h2 {
+    color: #cf4779;
+    margin-bottom: 18px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+button {
+    border: none;
+    background: #e86b96;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 15px 5px;
+    transition: .3s;
+}
+
+button:hover {
+    background: #c44572;
+    transform: scale(1.06);
+}
+
+/* SAKURA */
+
+.sakura {
+    position: fixed;
+    top: -30px;
+    z-index: 20;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ENVELOPE */
+
+.envelope-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 60px auto 35px;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 260px;
+    height: 170px;
+    background: #f7a9c4;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px #d45d8530;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 100px solid #ed7fa7;
+    transform-origin: top;
+    transition: transform .8s;
+    z-index: 4;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope::after {
+    content: "💗";
+    position: absolute;
+    top: 65px;
+    left: 115px;
+    font-size: 30px;
+    z-index: 5;
+}
+
+.letter-paper {
+    position: absolute;
+    background: #fff8fb;
+    width: 220px;
+    min-height: 145px;
+    left: 20px;
+    top: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    transition: transform 1s;
+    z-index: 2;
+}
+
+.envelope.open .letter-paper {
+    transform: translateY(-125px);
+    min-height: 250px;
+}
+
+.envelope-text {
+    font-weight: bold;
+    color: #c44572;
+    margin-top: 15px;
+}
+
+/* COUNTER */
+
+.counter {
+    font-size: 36px;
+    font-weight: bold;
+    color: #d64e7e;
+    margin: 20px;
+}
+
+/* SURPRISE */
+
+#surprise {
+    display: none;
+    padding: 20px;
+    line-height: 1.9;
+    font-size: 18px;
+    color: #d64e7e;
+}
+
+/* HEART */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 15;
+    animation: heartUp 4s linear forwards;
+}
+
+@keyframes heartUp {
+    to {
+        transform: translateY(-110vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    padding: 35px 15px;
+    line-height: 2;
+}
+
+@media(max-width:500px) {
+    .card {
+        padding: 25px 15px;
+    }
+
+    .envelope {
+        transform: scale(.9);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>From Your Favorite Person 💗</h1>
+    <p>A little place made especially for you 🌸</p>
+    <p>Every word here comes from the heart.</p>
+</header>
+
+<div class="container">
+
+    <!-- SURAT CINTA -->
+
+    <div class="card">
+
+        <h2>A Letter For You 💌</h2>
+
+        <p>
+            Ada beberapa hal yang ingin
+            aku sampaikan kepadamu.
+            Bukalah surat kecil ini.
+        </p>
+
+        <div class="envelope-wrapper">
+
+            <div class="envelope"
+                 id="envelope"
+                 onclick="toggleEnvelope()">
+
+                <div class="letter-paper">
+
+                    <h3>Dear My Favorite Person ❤️</h3>
+
+                    <br>
+
+                    Aku ingin kamu tahu bahwa
+                    aku sangat menghargai kehadiranmu.
+
+                    Terima kasih sudah menjadi
+                    bagian dari hari-hariku.
+
+                    <br><br>
+
+                    Maaf jika selama ini masih
+                    ada sikap dan perkataanku
+                    yang membuatmu kecewa.
+
+                    <br><br>
+
+                    You mean a lot to me. 💗
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <p class="envelope-text" id="envelopeText">
+            Klik amplop untuk membuka surat 💗
+        </p>
+
+    </div>
+
+
+    <!-- APRESIASI -->
+
+    <div class="card">
+
+        <h2>For Someone Special 🌷</h2>
+
+        <p>
+            Aku ingin mengucapkan terima kasih
+            karena sudah menjadi seseorang
+            yang begitu berarti.
+        </p>
+
+        <br>
+
+        <p>
+            Aku menghargai setiap usaha,
+            perhatian, waktu, dan hal-hal kecil
+            yang sudah kamu berikan.
+        </p>
+
+        <br>
+
+        <p>
+            Mungkin aku tidak selalu bisa
+            mengungkapkan semuanya dengan kata-kata,
+            tetapi aku ingin kamu tahu bahwa
+            kehadiranmu sangat berarti.
+        </p>
+
+    </div>
+
+
+    <!-- TERIMA KASIH -->
+
+    <div class="card">
+
+        <h2>Thank You For Everything 💗</h2>
+
+        <p>
+            Terima kasih untuk segala hal
+            yang sudah kamu lakukan.
+        </p>
+
+        <br>
+
+        <p>
+            Terima kasih sudah meluangkan waktu,
+            memberikan perhatian, berbagi cerita,
+            dan menghadirkan banyak kebahagiaan
+            dalam hari-hariku.
+        </p>
+
+        <br>
+
+        <p>
+            Aku mungkin tidak bisa membalas
+            semuanya dengan sempurna,
+            tetapi aku benar-benar menghargainya.
+        </p>
+
+    </div>
+
+
+    <!-- PERMINTAAN MAAF -->
+
+    <div class="card">
+
+        <h2>I'm Sorry 🥺</h2>
+
+        <p>
+            Aku juga ingin meminta maaf
+            atas segala kesalahan yang pernah aku lakukan.
+        </p>
+
+        <br>
+
+        <p>
+            Maaf jika ada perkataan yang kurang baik,
+            sikap yang membuatmu kecewa,
+            atau tindakan yang tidak sesuai harapanmu.
+        </p>
+
+        <br>
+
+        <p>
+            Aku sadar bahwa aku masih punya
+            banyak kekurangan.
+            Aku ingin terus belajar menjadi
+            pribadi yang lebih baik.
+        </p>
+
+        <br>
+
+        <p>
+            Terima kasih karena sudah bersabar
+            dan mau memahami aku. ❤️
+        </p>
+
+    </div>
+
+
+    <!-- PENGHITUNG HARI -->
+
+    <div class="card">
+
+        <h2>Our Special Date ⏳</h2>
+
+        <p>
+            Hari ketika cerita kita dimulai.
+        </p>
+
+        <h3 style="margin-top:15px">
+            22 - 10 - 2026
+        </h3>
+
+        <div class="counter" id="days">
+            0 Hari
+        </div>
+
+        <p id="journeyText">
+            And our story continues... 💕
+        </p>
+
+    </div>
+
+
+    <!-- KEJUTAN -->
+
+    <div class="card">
+
+        <h2>A Little Surprise 🎁</h2>
+
+        <p>
+            Sebelum kamu pergi,
+            ada satu pesan lagi untukmu.
+        </p>
+
+        <button onclick="showSurprise()">
+            Open Your Surprise 💗
+        </button>
+
+        <div id="surprise">
+
+            🌸 Terima kasih sudah menjadi
+            bagian dari cerita hidupku.
+
+            <br><br>
+
+            Aku berharap kita bisa terus
+            saling menghargai, memahami,
+            dan mendukung satu sama lain.
+
+            <br><br>
+
+            Jangan pernah lupa bahwa
+            kamu adalah seseorang yang berharga.
+
+            <br><br>
+
+            With Love, From Your Favorite Person ❤️
+
+        </div>
+
+    </div>
+
+
+    <!-- PENUTUP -->
+
+    <div class="card">
+
+        <h2>One Last Thing 💌</h2>
+
+        <p>
+            Aku tidak menjanjikan semuanya
+            akan selalu mudah.
+        </p>
+
+        <br>
+
+        <p>
+            Namun, aku berharap kita bisa
+            terus belajar memahami satu sama lain,
+            saling menghargai, dan menciptakan
+            lebih banyak kenangan indah.
+        </p>
+
+        <br>
+
+        <h2>Thank You For Being You ❤️</h2>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <h3>From Your Favorite Person 💗</h3>
+
+    <p>Made with love, especially for you.</p>
+
+    <p>🌸 You are appreciated. 🌸</p>
+
+</footer>
+
+
+<script>
+
+// ANIMASI SAKURA
+
+function createSakura() {
+
+    const flower = document.createElement("div");
+
+    flower.className = "sakura";
+    flower.innerHTML = "🌸";
+
+    flower.style.left = Math.random() * 100 + "vw";
+
+    flower.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    flower.style.animationDuration =
+        (5 + Math.random() * 6) + "s";
+
+    document.body.appendChild(flower);
+
+    setTimeout(() => flower.remove(), 11000);
+
+}
+
+setInterval(createSakura, 400);
+
+
+// ANIMASI HATI
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+
+}
+
+
+// AMPL0P SURAT
+
+function toggleEnvelope() {
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const text =
+        document.getElementById("envelopeText");
+
+    envelope.classList.toggle("open");
+
+    if (envelope.classList.contains("open")) {
+
+        text.innerText =
+            "A letter made with love 💗";
+
+        createHeart();
+
+    } else {
+
+        text.innerText =
+            "Klik amplop untuk membuka surat 💗";
+
+    }
+
+}
+
+
+// KEJUTAN
+
+function showSurprise() {
+
+    const surprise =
+        document.getElementById("surprise");
+
+    surprise.style.display = "block";
+
+    for (let i = 0; i < 12; i++) {
+
+        setTimeout(createHeart, i * 150);
+
+    }
+
+}
+
+
+// PENGHITUNG HARI
+
+const startDate =
+    new Date("2026-10-22T00:00:00");
+
+function updateDays() {
+
+    const today = new Date();
+
+    const difference = today - startDate;
+
+    const days = Math.floor(
+        difference / 86400000
+    );
+
+    const counter =
+        document.getElementById("days");
+
+    const journeyText =
+        document.getElementById("journeyText");
+
+    if (days >= 0) {
+
+        counter.innerText = days + " Hari";
+
+        journeyText.innerText =
+            "And our story continues... 💕";
+
+    } else {
+
+        counter.innerText = "Segera dimulai 💗";
+
+        journeyText.innerText =
+            "Counting down to our special day 🌸";
+
+    }
+
+}
+
+updateDays();
+
+</script>
+
+</body>
+</html>
